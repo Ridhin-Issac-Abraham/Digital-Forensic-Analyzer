@@ -47,3 +47,12 @@ python setup.py
 
 # Run the application
 python app.py
+
+
+## Dataset Requirements
+Note: Large datasets are not included in this repository
+
+This project requires the following datasets that should be placed in the datasets directory:
+
+CASIA v2.0 Image Manipulation Dataset
+Deepfake Detection Dataset
