@@ -13,3 +13,21 @@ CNN-based image manipulation detection
 Vision Transformer (ViT) architecture for deepfake detection
 Chain of Custody: Cryptographically verified custody tracking with full audit trails
 Web Dashboard: Intuitive interface with responsive design and evidence visualization
+
+
+System Architecture
+The framework is built on a modular architecture with four specialized databases:
+
+evidence.db: Stores file evidence and analysis results
+emails.db: Manages email evidence and security validation data
+custody.db: Maintains chain of custody records
+users.db: Handles authentication and access control
+Technologies
+Backend: Python 3.8+, Flask
+Databases: SQLite 3.x
+AI Components: TensorFlow 2.8+, OpenCV
+Memory Analysis: psutil, custom process monitoring
+Frontend: HTML5, JavaScript, CSS
+
+
+
