@@ -1,0 +1,44 @@
+SessionId:	3745ec39-a421-43e7-8eff-a547e2226d54
+DeviceId:	ed05ec2c-9a72-49ff-bfc2-0a88358ef55e
+HostVersion:	25044.2208.3471.2155
+WebVersion:	49/25030201146
+Language(App):	en-us
+OriginLanguage:	en-US
+BrowserLanguage:	en-US
+FormattingLocaleInfo:
+	RegionalFormat:	en-in
+	ShortDate:	dd-MM-yyyy
+	LongDate:	dd MMMM yyyy
+	ShortTime:	HH:mm
+	LongTime:	HH:mm:ss
+	Calendar:	1
+	FirstDayOfWeek:	0
+TimeZone:	Asia/Calcutta	TimeZone Offset:	-330
+Ring:	general
+Logged in users:
+	ridhinissac2003@outlook.com  Issac Abraham  TId:9188040d-6c67-4c5b-b112-36a304b66dad  OId:00000000-0000-0000-64ce-2bf36bd4ee70  UserId:64ce2bf36bd4ee70
+
+Latest errors for Core
+2025-03-24T16:19:43.617Z Err	ErrorStateProvider: stack:  ChunkLoadError
+    at u.f.j (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:325691)
+    at https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:2409
+    at Array.reduce (<anonymous>)
+    at u.e (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:2387)
+    at u.e (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-...
+2025-03-24T16:19:43.617Z Err	ErrorStateProvider: extractedError:  {"name":"ChunkLoadError","message":"Loading chunk 980211 failed after 1 retries.\n(jszip-8dd25e6c8608262b.js)","stack":["ChunkLoadError","at u.f.j (https://statics.teams.cdn.live.net/220773bdb126f115ff1762263cdab8410eaff71ac6ae0165c93573ba35e8d985","at https://statics.teams.cdn.live.net/f7486e932b49374ca508a38af4f7796cac7868b4f940442a7aef54b89152b517","at Array.reduce (<anonymous>)","at u.e (https://statics.teams.cdn.live.net/f4de75946f3ea6dc04d6dee523d04d48931dcf0fc5877...
+2025-03-24T16:19:43.616Z Err	ErrorStateProvider: showOops: false, errors: [errorCode:UnhandledPromiseRejection;filename:undefined;lineno:undefined;colno:undefined]
+2025-03-24T16:19:43.616Z Err	ErrorStateProvider: Reported error for scenario unhandled_rejection_error: UnhandledPromiseRejection
+2025-03-24T16:19:43.612Z Err	ErrorStateProvider: stack:  ChunkLoadError
+    at u.f.j (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:325691)
+    at https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:2409
+    at Array.reduce (<anonymous>)
+    at u.e (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-assets/runtime-03f925d85ff80448.js:1:2387)
+    at u.e (https://statics.teams.cdn.live.net/teams-modular-packages/hashed-...
+
+Latest errors for 64ce2bf36bd4ee70
+2025-03-24T16:19:41.730Z Err	CID[Core-724de516-98b3-45cc-83fb-a8e469e404f5] Consumer Groups media auth service: failed to get auth Token
+2025-03-24T16:19:36.020Z Err	CID[Core-724de516-98b3-45cc-83fb-a8e469e404f5] removeBannerNotificationFromQueue: Banner was dismissed but was not found in the queue.
+2025-03-24T16:19:36.020Z Err	CID[Core-724de516-98b3-45cc-83fb-a8e469e404f5] removeBannerNotificationFromQueue: Banner was dismissed but was not found in the queue.
+2025-03-24T16:19:36.019Z Err	CID[Core-724de516-98b3-45cc-83fb-a8e469e404f5] removeBannerNotificationFromQueue: Banner was dismissed but was not found in the queue.
+2025-03-24T16:19:35.858Z Err	CID[Core-724de516-98b3-45cc-83fb-a8e469e404f5] NativeMeetingStage: [initializeSelectedCamera] Failed to get selected camera id
+

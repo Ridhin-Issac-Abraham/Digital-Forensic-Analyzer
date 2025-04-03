@@ -1,0 +1,102 @@
+{
+  "pid": 4184,
+  "name": "firefox.exe",
+  "exe": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+  "cmdline": [
+    "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+    "-osint",
+    "-url",
+    "http://127.0.0.1:5000/"
+  ],
+  "create_time": "2025-03-28T09:52:13.793880",
+  "memory_info": {
+    "rss": 464113664,
+    "vms": 357044224,
+    "num_page_faults": 1600423,
+    "peak_wset": 572575744,
+    "wset": 464113664,
+    "peak_paged_pool": 1334496,
+    "paged_pool": 1294032,
+    "peak_nonpaged_pool": 3296064,
+    "nonpaged_pool": 136712,
+    "pagefile": 357044224,
+    "peak_pagefile": 480989184,
+    "private": 357044224
+  },
+  "cpu_percent": 0.0,
+  "status": "running",
+  "username": "I-S-S-A-C\\Issac",
+  "num_threads": 89,
+  "connections": [
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        52305
+      ],
+      "raddr": [
+        "127.0.0.1",
+        52306
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "100.127.255.253",
+        57614
+      ],
+      "raddr": [
+        "34.107.243.93",
+        443
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        52306
+      ],
+      "raddr": [
+        "127.0.0.1",
+        52305
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        59663
+      ],
+      "raddr": [
+        "127.0.0.1",
+        5000
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "100.127.255.253",
+        58768
+      ],
+      "raddr": [
+        "34.107.243.93",
+        443
+      ],
+      "status": "ESTABLISHED"
+    }
+  ]
+}

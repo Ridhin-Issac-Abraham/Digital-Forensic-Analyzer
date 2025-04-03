@@ -1,0 +1,222 @@
+{
+  "pid": 17076,
+  "name": "XboxPcApp.exe",
+  "exe": "C:\\Program Files\\WindowsApps\\Microsoft.GamingApp_2503.1001.9.0_x64__8wekyb3d8bbwe\\XboxPcApp.exe",
+  "created_time": "2025-04-01T10:46:37.227140",
+  "memory_usage": 307,
+  "cpu_percent": 0.0,
+  "status": "running",
+  "threads": 41,
+  "connections": [
+    {
+      "type": 1,
+      "family": 2,
+      "status": "ESTABLISHED",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52540
+      ],
+      "raddr": [
+        "199.46.35.128",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52504
+      ],
+      "raddr": [
+        "199.46.35.128",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "ESTABLISHED",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52979
+      ],
+      "raddr": [
+        "23.206.121.13",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52809
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52813
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52821
+      ],
+      "raddr": [
+        "52.251.73.54",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "ESTABLISHED",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52542
+      ],
+      "raddr": [
+        "20.110.86.75",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52812
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52814
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52817
+      ],
+      "raddr": [
+        "23.41.168.10",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52505
+      ],
+      "raddr": [
+        "20.110.86.75",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52816
+      ],
+      "raddr": [
+        "23.47.168.52",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52810
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52818
+      ],
+      "raddr": [
+        "23.41.168.10",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "CLOSE_WAIT",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.249",
+        52811
+      ],
+      "raddr": [
+        "23.47.169.200",
+        443
+      ]
+    }
+  ]
+}

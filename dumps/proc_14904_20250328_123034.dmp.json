@@ -1,0 +1,11 @@
+{
+  "pid": 14904,
+  "name": "Code.exe",
+  "exe": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+  "created_time": "2025-03-28T09:48:58.148082",
+  "memory_usage": 742,
+  "cpu_percent": 9.4,
+  "status": "running",
+  "threads": 29,
+  "connections": []
+}

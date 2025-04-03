@@ -1,0 +1,116 @@
+{
+  "pid": 4184,
+  "name": "firefox.exe",
+  "exe": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+  "cmdline": [
+    "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+    "-osint",
+    "-url",
+    "http://127.0.0.1:5000/"
+  ],
+  "create_time": "2025-03-28T09:52:13.793880",
+  "memory_info": {
+    "rss": 466427904,
+    "vms": 360431616,
+    "num_page_faults": 1608589,
+    "peak_wset": 572575744,
+    "wset": 466427904,
+    "peak_paged_pool": 1334496,
+    "paged_pool": 1295848,
+    "peak_nonpaged_pool": 3296064,
+    "nonpaged_pool": 134712,
+    "pagefile": 360431616,
+    "peak_pagefile": 480989184,
+    "private": 360431616
+  },
+  "cpu_percent": 0.0,
+  "status": "running",
+  "username": "I-S-S-A-C\\Issac",
+  "num_threads": 87,
+  "connections": [
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        52305
+      ],
+      "raddr": [
+        "127.0.0.1",
+        52306
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "100.127.255.253",
+        59884
+      ],
+      "raddr": [
+        "34.107.243.93",
+        443
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        52306
+      ],
+      "raddr": [
+        "127.0.0.1",
+        52305
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        60162
+      ],
+      "raddr": [
+        "127.0.0.1",
+        5000
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        60161
+      ],
+      "raddr": [
+        "127.0.0.1",
+        5000
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "100.127.255.253",
+        59876
+      ],
+      "raddr": [
+        "34.107.243.93",
+        443
+      ],
+      "status": "ESTABLISHED"
+    }
+  ]
+}

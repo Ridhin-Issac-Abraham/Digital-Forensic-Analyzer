@@ -1,0 +1,11 @@
+{
+  "pid": 8332,
+  "name": "python.exe",
+  "exe": "C:\\Users\\Issac\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "created_time": "2025-03-30T17:13:01.772638",
+  "memory_usage": 1015,
+  "cpu_percent": 6.2,
+  "status": "running",
+  "threads": 91,
+  "connections": []
+}

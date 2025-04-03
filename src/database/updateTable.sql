@@ -1,0 +1,4 @@
+ALTER TABLE users 
+ADD COLUMN permissions TEXT DEFAULT '[]',
+ADD COLUMN last_login DATETIME,
+ADD COLUMN active BOOLEAN DEFAULT 1;

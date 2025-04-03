@@ -1,0 +1,32 @@
+{
+  "pid": 2692,
+  "name": "msedge.exe",
+  "exe": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "created_time": "2025-04-01T10:11:05.179458",
+  "memory_usage": 246,
+  "cpu_percent": 15.6,
+  "status": "running",
+  "threads": 55,
+  "connections": [
+    {
+      "type": 2,
+      "family": 2,
+      "status": "NONE",
+      "fd": -1,
+      "laddr": [
+        "0.0.0.0",
+        5353
+      ]
+    },
+    {
+      "type": 2,
+      "family": 23,
+      "status": "NONE",
+      "fd": -1,
+      "laddr": [
+        "::",
+        5353
+      ]
+    }
+  ]
+}

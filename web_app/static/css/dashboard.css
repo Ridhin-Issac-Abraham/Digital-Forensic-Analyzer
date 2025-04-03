@@ -1,0 +1,432 @@
+/* General Styles */
+.analysis-status { 
+    display: none; 
+    margin-top: 15px; 
+}
+
+.hash-text { 
+    font-family: monospace; 
+    font-size: 0.9em; 
+    word-break: break-all;
+}
+
+/* Navigation & Layout */
+.nav-tabs { 
+    margin-bottom: 20px; 
+}
+
+.nav-tabs .nav-link {
+    color: #495057;
+    padding: 12px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    color: #007bff;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link i {
+    margin-right: 8px;
+}
+
+.card { 
+    margin-bottom: 20px; 
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Background image for the entire application */
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Add semi-transparent overlay to make content more readable */
+.container, .container-fluid {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Custody Timeline */
+.custody-timeline {
+    position: relative;
+    padding: 20px 0;
+    margin-left: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.custody-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #0d6efd;
+}
+
+/* Custody Records */
+.custody-record {
+    position: relative;
+    margin-left: 50px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    margin: 10px 0;
+    border-left: 3px solid #007bff;
+}
+
+.custody-record:hover {
+    transform: translateX(5px);
+}
+
+.custody-record::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border: 3px solid #0d6efd;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+/* Custody Components */
+.custody-badge {
+    font-size: 0.85rem;
+    padding: 0.25em 0.75em;
+}
+
+.custody-timestamp {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.custody-handler {
+    font-weight: 500;
+    color: #0d6efd;
+}
+
+.custody-filter {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+/* Memory Analysis Styles */
+#processTable .table-info {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+#processTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+    cursor: pointer;
+}
+
+.memory-high {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.memory-stats {
+    padding: 15px;
+}
+
+.memory-stats .progress {
+    height: 20px;
+}
+
+.memory-stats .progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+.memory-stats h5 {
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.memory-stats .text-muted {
+    font-size: 0.875rem;
+}
+
+/* Wider button for Memory Analysis */
+.memory-analyze-btn {
+    min-width: 100px; /* Increase button width */
+}
+
+/* Target analyze buttons in the process table specifically */
+#processTable .btn-info,
+#processTable button[onclick*="analyzeProcess"] {
+    min-width: 100px; /* Increase button width */
+    background-color: #102655 !important;
+    border-color: #102655 !important;
+    color: white !important;
+}
+
+#processTable .btn-info:hover,
+#processTable button[onclick*="analyzeProcess"]:hover {
+    background-color: #0b1c40 !important; 
+    border-color: #0b1c40 !important;
+}
+
+/* User Session Styles */
+.user-session {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.user-session .username {
+    font-weight: 500;
+    color: #fff;
+}
+
+.logout-btn {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: white;
+}
+
+/* Session Status */
+.session-alert {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    padding-top: 20px;
+    min-height: calc(100vh - 56px);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 56px);
+    border-right: 1px solid #dee2e6;
+    padding: 20px 0;
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 12px 20px;
+    margin: 4px 0;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #e9ecef;
+    padding-left: 25px;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Stats Cards */
+.stats-cards .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stats-cards .card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-cards .card-body {
+    padding: 20px;
+}
+
+.stats-cards h5 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.stats-cards h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.card h5 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Analysis Sections */
+.analysis-section {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Analysis Content */
+.tab-content {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Tables */
+.table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table-sm td {
+    padding: 0.3rem;
+    word-break: break-word;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Loading Animation */
+.loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.loading .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+.modal-body .list-group-item {
+    padding: 0.5rem 1rem;
+}
+
+.text-monospace {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Add to your CSS file */
+#deepfake-results-container .result-summary {
+    padding: 1rem;
+}
+
+#deepfake-status {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#deepfake-results-container .alert {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.image-container {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+#deepfake-visualization {
+    max-height: 400px;
+    border: 1px solid #ddd;
+}
+
+/* Custom header color */
+.bg-custom-purple {
+    background-color: #7131a3 !important;
+    color: white !important;
+}
+
+/* Custom purple button */
+.btn-custom-purple {
+    background-color: #55227c !important;
+    border-color: #55227c !important;
+    color: white !important;
+}
+
+.btn-custom-purple:hover, .btn-custom-purple:focus, .btn-custom-purple:active {
+    background-color: #461c68 !important; /* slightly darker shade for hover */
+    border-color: #461c68 !important;
+    color: white !important;
+}
+
+/* Custom dark blue button for Details */
+.btn-details {
+    background-color: #102655 !important;
+    border-color: #102655 !important;
+    color: white !important;
+}
+
+.btn-details:hover, .btn-details:focus, .btn-details:active {
+    background-color: #0b1c40 !important; /* slightly darker shade for hover */
+    border-color: #0b1c40 !important;
+    color: white !important;
+}

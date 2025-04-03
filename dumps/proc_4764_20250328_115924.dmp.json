@@ -1,0 +1,91 @@
+{
+  "pid": 4764,
+  "name": "Code.exe",
+  "exe": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+  "cmdline": [
+    "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+    "--type=utility",
+    "--utility-sub-type=node.mojom.NodeService",
+    "--lang=en-US",
+    "--service-sandbox-type=none",
+    "--dns-result-order=ipv4first",
+    "--inspect-port=0",
+    "--video-capture-use-gpu-memory-buffer",
+    "--user-data-dir=C:\\Users\\Issac\\AppData\\Roaming\\Code",
+    "--standard-schemes=vscode-webview,vscode-file",
+    "--enable-sandbox",
+    "--secure-schemes=vscode-webview,vscode-file",
+    "--cors-schemes=vscode-webview,vscode-file",
+    "--fetch-schemes=vscode-webview,vscode-file",
+    "--service-worker-schemes=vscode-webview",
+    "--code-cache-schemes=vscode-webview,vscode-file",
+    "--field-trial-handle=3624,i,10033533556086449666,18090297915055700325,262144",
+    "--disable-features=CalculateNativeWinOcclusion,PlzDedicatedWorker,SpareRendererForSitePerProcess,WinDelaySpellcheckServiceInit,WinRetrieveSuggestionsOnlyOnDemand",
+    "--variations-seed-version",
+    "--mojo-platform-channel-handle=3620",
+    "/prefetch:14"
+  ],
+  "create_time": "2025-03-28T09:48:59.678015",
+  "memory_info": {
+    "rss": 647491584,
+    "vms": 764403712,
+    "num_page_faults": 1569093,
+    "peak_wset": 713494528,
+    "wset": 647491584,
+    "peak_paged_pool": 948296,
+    "paged_pool": 614072,
+    "peak_nonpaged_pool": 1489552,
+    "nonpaged_pool": 69376,
+    "pagefile": 764403712,
+    "peak_pagefile": 811921408,
+    "private": 764403712
+  },
+  "cpu_percent": 0.0,
+  "status": "running",
+  "username": "I-S-S-A-C\\Issac",
+  "num_threads": 23,
+  "connections": [
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        49988
+      ],
+      "raddr": [
+        "127.0.0.1",
+        49968
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        49987
+      ],
+      "raddr": [
+        "127.0.0.1",
+        49968
+      ],
+      "status": "ESTABLISHED"
+    },
+    {
+      "fd": -1,
+      "family": 2,
+      "type": 1,
+      "laddr": [
+        "127.0.0.1",
+        49975
+      ],
+      "raddr": [
+        "127.0.0.1",
+        49971
+      ],
+      "status": "ESTABLISHED"
+    }
+  ]
+}

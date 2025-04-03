@@ -1,0 +1,11 @@
+{
+  "pid": 12888,
+  "name": "python.exe",
+  "exe": "C:\\Users\\ridhi\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "created_time": "2025-04-03T10:31:44.413925",
+  "memory_usage": 625,
+  "cpu_percent": 46.9,
+  "status": "running",
+  "threads": 35,
+  "connections": []
+}

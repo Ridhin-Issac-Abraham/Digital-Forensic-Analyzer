@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Forensics Dashboard</title>
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Navigation with Login Status - Restructured Layout -->
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left section (Register button) -->
+            <div class="navbar-left">
+                {% if session.get('role') == 'admin' %}
+                <div class="nav-item">
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-light">
+                        <i class="fas fa-user-plus"></i> Register New User
+                    </a>
+                </div>
+                {% else %}
+                <!-- Empty div to maintain the 3-column layout -->
+                <div></div>
+                {% endif %}
+            </div>
+            
+            <!-- Center section (App title) -->
+            <div class="navbar-center">
+                <span class="navbar-brand m-0">Digital Forensics Analyzer</span>
+            </div>
+            
+            <!-- Right section (Welcome message & logout) -->
+            <div class="navbar-right">
+                {% if session.get('logged_in') %}
+                <div class="d-flex align-items-center text-white">
+                    <span class="me-3">Welcome, {{ session.get('username') }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+                {% else %}
+                <!-- Empty div to maintain the 3-column layout -->
+                <div></div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% if session.get('logged_in') %}
+    <div class="container">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#fileAnalysis">File Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#emailEvidence">Email Evidence</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#memoryAnalysis">Memory Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#aiAnalysis">AI Analysis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="deepfake-tab" data-bs-toggle="tab" href="#deepfake-detection" role="tab">
+                    <i class="fas fa-user-secret"></i> Deepfake Detection
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- File Analysis Tab -->
+            <div class="tab-pane fade show active" id="fileAnalysis">
+                <!-- File Upload Card -->
+                <div class="card">
+                    <div class="card-header bg-custom-purple">
+                        <h5 class="mb-0">Upload Evidence Files</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="uploadForm">
+                            <div class="mb-3">
+                                <input type="file" class="form-control" id="fileInput" 
+                                       accept=".txt,.pdf,.png,.jpg,.jpeg">
+                                <div class="form-text">Supported: PDF, TXT, PNG, JPG</div>
+                            </div>
+                            <button type="submit" class="btn btn-custom-purple">
+                                <span class="upload-text">Analyze File</span>
+                                <span class="spinner-border spinner-border-sm d-none"></span>
+                            </button>
+                        </form>
+                        
+                        <div id="analysisStatus" class="analysis-status alert alert-info">
+                            <div class="d-flex align-items-center">
+                                <div class="spinner-border spinner-border-sm me-2"></div>
+                                <span id="statusText">Processing...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Analysis Results -->
+                <div class="card">
+                    <div class="card-header bg-custom-purple d-flex justify-content-between">
+                        <h5 class="mb-0">Analysis Results</h5>
+                        <span id="resultCount" class="badge bg-light text-dark">0 files</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Filename</th>
+                                        <th>Type</th>
+                                        <th>Size</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="resultsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Evidence Tab -->
+            <div class="tab-pane fade" id="emailEvidence">
+                <div class="card">
+                    <!-- Keep only this header block with the refresh button -->
+                    <div class="card-header bg-custom-purple d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Email Evidence</h5>
+                        <div>
+                            <button id="refreshEmails" class="btn btn-light btn-sm me-2" onclick="refreshEmails()">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <span id="emailCount" class="badge bg-light text-dark">0 emails</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Sender</th>
+                                        <th>Subject</th>
+                                        <th>Security</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="emailsBody">
+                                    <!-- Email rows will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Add pagination container -->
+                        <div id="emailPagination" class="mt-3">
+                            <!-- Pagination controls will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Analysis Tab -->
+            <div class="tab-pane fade" id="memoryAnalysis">
+                <div class="card">
+                    <div class="card-header bg-custom-purple d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Memory Analysis</h5>
+                        <div>
+                            <button id="refreshProcesses" class="btn btn-light btn-sm me-2">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <span id="processCount" class="badge bg-light text-dark">0 processes</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#runningProcesses">Running Processes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#memoryDumps">Memory Dumps</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#systemMemory">System Memory</a>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content pt-3">
+                            <div class="tab-pane fade show active" id="runningProcesses">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>PID</th>
+                                                <th>Process</th>
+                                                <th>User</th>
+                                                <th>Memory (MB)</th>
+                                                <th>CPU %</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="processTable">
+                                            <!-- Processes will be listed here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="memoryDumps">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="mb-0">Memory Dumps</h5>
+                                    <button id="clearMemoryDumps" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Clear All Dumps
+                                    </button>
+                                </div>
+                                
+                                <!-- Add progress indicator -->
+                                <div id="memoryDumpsLoading" class="text-center my-4">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    <p>Loading memory dumps...</p>
+                                </div>
+                                
+                                <!-- Dumps list container -->
+                                <div id="memoryDumpsList">
+                                    <!-- Memory dumps will be loaded here -->
+                                </div>
+                                
+                                <!-- Empty state message -->
+                                <div id="memoryDumpsEmpty" class="alert alert-info d-none">
+                                    No memory dumps available. Capture process memory to see dumps here.
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="systemMemory">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card mb-4" style="height: 300px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Physical Memory</h5>
+                                                <div style="position: relative; height: 220px;">
+                                                    <canvas id="physicalMemoryChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card mb-4" style="height: 300px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Swap Memory</h5>
+                                                <div style="position: relative; height: 220px;">
+                                                    <canvas id="swapMemoryChart"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Analysis Tab -->
+            <div class="tab-pane fade" id="aiAnalysis">
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-custom-purple">
+                                <h5 class="card-title mb-0">Image Authentication</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="analysisType" id="tamperingAnalysis" value="tampering" checked>
+                                        <label class="form-check-label" for="tamperingAnalysis">
+                                            <i class="fas fa-image"></i> Check for Tampering
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="deepfakeAnalysis">
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <form id="imageUploadForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Image for Analysis</label>
+                                        <input type="file" class="form-control" id="imageInput" accept="image/*">
+                                    </div>
+                                    <button type="submit" class="btn btn-custom-purple">
+                                        <i class="fas fa-search"></i> Analyze Image
+                                    </button>
+                                </form>
+                                
+                                <!-- Tampering analysis results (your existing results container) -->
+                                <div id="analysisResult" class="mt-3">
+                                    <!-- Tampering results will be displayed here -->
+                                </div>
+                                
+                                <!-- New container for deepfake results -->
+                                <div id="deepfakeResult" class="mt-3 d-none">
+                                    <h5>Deepfake Analysis Results</h5>
+                                    <div class="alert" id="deepfakeAlert">
+                                        <div id="deepfakeMessage"></div>
+                                        <div class="mt-2">Confidence: <span id="deepfakeConfidence"></span></div>
+                                    </div>
+                                    
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-header">Original Image</div>
+                                                <div class="card-body text-center p-0">
+                                                    <img id="deepfakeOriginal" class="img-fluid" alt="Original image">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card">
+                                                <div class="card-header">Analysis Result</div>
+                                                <div class="card-body text-center p-0">
+                                                    <img id="deepfakeVisualization" class="img-fluid" alt="Analysis result">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-custom-purple">
+                                <h5 class="card-title mb-0">Analysis History</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="analysisHistory">
+                                    <!-- History will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deepfake Detection Tab -->
+            <div class="tab-pane fade" id="deepfake-detection" role="tabpanel">
+                <div class="container-fluid">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-custom-purple">
+                                    <h5 class="card-title">Deepfake Analysis</h5>
+                                    <p class="card-subtitle">Detect artificially generated or manipulated face images</p>
+                                </div>
+                                <div class="card-body">
+                                    <form id="deepfake-form" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="deepfake-file">Select Image File</label>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="deepfake-file" name="file" accept=".jpg,.jpeg,.png">
+                                                <label class="custom-file-label" for="deepfake-file">Choose image...</label>
+                                            </div>
+                                            <small class="form-text text-muted">Upload an image to analyze for deepfake manipulation.</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-custom-purple" id="deepfake-analyze-btn">
+                                            <i class="fas fa-search"></i> Check for Deepfakes
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Results card - initially hidden -->
+                    <div class="row" id="deepfake-results-container" style="display:none;">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-custom-purple">
+                                    <h5 class="card-title">Deepfake Analysis Results</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="result-summary">
+                                                <h4 id="deepfake-status">Analyzing...</h4>
+                                                <div class="alert" id="deepfake-alert" role="alert"></div>
+                                                <p><strong>Confidence:</strong> <span id="deepfake-confidence">-</span></p>
+                                                <p><strong>Details:</strong> <span id="deepfake-message">-</span></p>
+                                                <p><strong>Faces Detected:</strong> <span id="deepfake-faces">-</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="image-container">
+                                                <h5>Analysis Visualization</h5>
+                                                <img id="deepfake-visualization" class="img-fluid" src="" alt="Analysis visualization">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-custom-purple">
+                                    <h5 class="card-title">About Deepfake Detection</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>This tool uses Vision Transformer (ViT) technology to detect manipulated face images, including:</p>
+                                    <ul>
+                                        <li>AI-generated faces (StyleGAN, etc.)</li>
+                                        <li>Face swaps</li>
+                                        <li>Digital manipulation of facial features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Only display this container if at least one permission exists -->
+        {% if 'manage_users' in user_permissions or 'collect_evidence' in user_permissions or 'analyze_evidence' in user_permissions %}
+        <div class="container">
+            <div class="row">
+                <!-- Admin Section -->
+                {% if 'manage_users' in user_permissions %}
+                <div class="col-md-4 mb-4">
+                    <div class="card border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h5><i class="fas fa-users-cog"></i> Admin Controls</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="{{ url_for('register') }}" class="list-group-item">
+                                    <i class="fas fa-user-plus"></i> Register New User
+                                </a>
+                                <a href="{{ url_for('user_management') }}" class="list-group-item">
+                                    <i class="fas fa-users"></i> Manage Users
+                                </a>
+                                <a href="{{ url_for('view_logs') }}" class="list-group-item">
+                                    <i class="fas fa-history"></i> View Activity Logs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Evidence Collection Section -->
+                {% if 'collect_evidence' in user_permissions %}
+                <div class="col-md-4 mb-4">
+                    <div class="card border-success">
+                        <!-- ... existing evidence collection code ... -->
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Analysis Section -->
+                {% if 'analyze_evidence' in user_permissions %}
+                <div class="col-md-4 mb-4">
+                    <div class="card border-info">
+                        <!-- ... existing analysis code ... -->
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="container text-center mt-5">
+        <h2>Please log in to access the dashboard</h2>
+        <a href="{{ url_for('login') }}" class="btn btn-primary mt-3">Go to Login</a>
+    </div>
+    {% endif %}
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="fileDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">File Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- File Details Content -->
+                    <div id="fileDetailsContent"></div>
+                    
+                    <!-- Chain of Custody -->
+                    <div class="mt-4">
+                        <h6 class="border-bottom pb-2">Chain of Custody</h6>
+                        <div id="custodyTimeline" class="custody-timeline"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Modal -->
+    <div class="modal fade" id="analysisModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Process Analysis</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="analysisContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memory Dump Modal -->
+    <div class="modal fade" id="memoryDumpModal" tabindex="-1" aria-labelledby="memoryDumpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="memoryDumpModalTitle">Memory Dump Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="memoryDumpModalBody">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/memory-analysis.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

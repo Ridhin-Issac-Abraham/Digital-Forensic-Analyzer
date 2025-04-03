@@ -1,0 +1,40 @@
+{
+  "pid": 6104,
+  "name": "WhatsApp.exe",
+  "exe": "C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2509.4.0_x64__cv1g1gvanyjgm\\WhatsApp.exe",
+  "created_time": "2025-03-28T09:48:36.131057",
+  "memory_usage": 478,
+  "cpu_percent": 0.0,
+  "status": "running",
+  "threads": 34,
+  "connections": [
+    {
+      "type": 1,
+      "family": 2,
+      "status": "ESTABLISHED",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.253",
+        51371
+      ],
+      "raddr": [
+        "31.13.71.49",
+        443
+      ]
+    },
+    {
+      "type": 1,
+      "family": 2,
+      "status": "ESTABLISHED",
+      "fd": -1,
+      "laddr": [
+        "100.127.255.253",
+        51358
+      ],
+      "raddr": [
+        "31.13.71.50",
+        443
+      ]
+    }
+  ]
+}

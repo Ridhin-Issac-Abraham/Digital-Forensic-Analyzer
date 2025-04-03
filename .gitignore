@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+src/datasets/
+src/data/
+src/models/
+src/processed_dataset/
+
+
+# Log files
+logs/
+*.log
